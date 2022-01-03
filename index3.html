@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script src="js/all.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script type="text/babel">
+
+        ////////////////////////////////////////
+        //HeadingBox Component
+        const HeadingBox = ({ title }) => {
+            return <>
+                <div className="haeding-box">
+                    <div className="chevron-left" onClick={() => console.log('chevronleftButton clicked')}>
+                        <i className="fa fa-chevron-left" aria-hidden="true"></i>
+                    </div>
+                    <div className="haeding">
+                        <h2>{title}</h2>
+                        <img src="img/verify.png" />
+                    </div>
+                    <div className="threedots" onClick={() => console.log('threedotsButton clicked')}>...</div>
+                </div>
+            </>
+        }
+        //HeadingBox PropTypes
+        HeadingBox.propTypes = {
+            title: PropTypes.string
+        };
+
+        ////////////////////////////////////////
+        //ProfileInfo Component
+        const ProfileInfo = ({ imgSrc }) => {
+            return <>
+                <div className="profile-info">
+                    <div className="profile-image">
+                        <div className="profile-wrap">
+                            <img src={imgSrc} alt="@instagram" width="160" height="160" />
+                        </div>
+                    </div>
+                    <div className="profile-numbers">
+                        <ul>
+                            <li>
+                                <h2>6,368</h2>
+                                <br />
+                                <span>Posts</span>
+                            </li>
+                            <li>
+                                <h2>350 M</h2>
+                                <br />
+                                <span>Followers</span>
+                            </li>
+                            <li>
+                                <h2>101</h2>
+                                <br />
+                                <span>Following</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </>
+        }
+        //ProfileInfo PropTypes
+        ProfileInfo.propTypes = {
+            imgSrc: PropTypes.string
+        };
+
+        ////////////////////////////////////////
+        //BioBox Component 
+        const BioBox = (props) => {
+            const { title, bioText, link, linkText } = props;
+            return <>
+                <div className="bio-box">
+                    <h3>{title}</h3>
+                    <p>{bioText}</p>
+                    <a href={link}>{linkText}</a>
+                </div>
+            </>
+        }
+        const bioBoxAttr = {
+            title: "Instagram",
+            bioText: "Bringing you closer to the people and things you love.🧡",
+            link: "www.facebook.com/covidssupport",
+            linkText: "www.facebook.com/covidssupport"
+        }
+        //BioBox  PropTypes
+        BioBox.propTypes = {
+            title: PropTypes.string,
+            bioText: PropTypes.string,
+            link: PropTypes.string,
+            linkText: PropTypes.string
+        };
+
+        ////////////////////////////////////////
+        //ButtonBox Component 
+        const ButtonBox = (props) => {
+            const { title1, title2, title3, onClick1, onClick2, onClick3 } = props;
+            return <>
+                <div className="buttons-box">
+                    <button className="blue-button" onClick={onClick1}>{title1}</button>
+                    <button className="button" onClick={onClick2}>{title2}</button>
+                    <button className="button" onClick={onClick3}>{title3}</button>
+                </div>
+            </>
+        }
+        const buttonsAttr = {
+            title1: "Follow",
+            title2: "Message",
+            title3: <i className="fas fa-angle-down"></i>,
+            onClick1: () => console.log("followButton clicked"),
+            onClick2: () => console.log("messageButton clicked"),
+            onClick3: () => console.log("angledownButton clicked")
+        }
+        //ButtonBox PropTypes
+        ButtonBox.propTypes = {
+            title1: PropTypes.string,
+            title2: PropTypes.string,
+            title3: PropTypes.object,
+            onClick1: PropTypes.func,
+            onClick2: PropTypes.func,
+            onClick3: PropTypes.func,
+        };
+
+        ////////////////////////////////////////
+        //App Component 
+        const App = () => {
+            return (
+                <div className="container">
+                    <HeadingBox title="instagram" />
+                    <ProfileInfo imgSrc="img/instagram.png" />
+                    <BioBox {...bioBoxAttr} />
+                    <ButtonBox {...buttonsAttr} />
+                </div>
+            )
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

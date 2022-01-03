@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <div id="root">
+
+    </div>
+
+    <script type="text/javascript">
+
+        const haedingBox = React.createElement('div', { className: 'heading-box' },);
+        const profileInfo = React.createElement('div', { className: 'profile-info' },);
+        const profileNumbers = React.createElement('div', { className: 'profile-numbers' },);
+    
+        function bioBox(parentTagName,parentClass,childTagName1,childTagName2,childTagName3,childContent1,childContent2,childContent3){
+            return React.createElement(`${parentTagName}`,{className : `${parentClass}`},
+            React.createElement(`${childTagName1}`,{},`${childContent1}`),
+            React.createElement(`${childTagName2}`,{},`${childContent2}`),
+            React.createElement(`${childTagName3}`,{},`${childContent3}`),
+            );
+        }
+
+        const container = React.createElement(
+            'div',
+            {
+                className: 'container',
+            }
+            ,
+            haedingBox,
+            profileInfo,
+            profileNumbers,
+            bioBox('div','bio-box','h3', 'p' ,'a','Instagram','Bringing you closer to the people and things you love.🧡'
+            ,'www.facebook.com/covidssupport'),    
+        );
+
+        const root = document.getElementById('root');
+        ReactDOM.render(container, root);
+    </script>
+</body>
+
+</html>
